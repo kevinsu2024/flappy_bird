@@ -45,7 +45,7 @@ View::draw_score_(ge211::Sprite_set& set){
         last_checked_score_++;
     }
     set.add_sprite(current_score_sprite_, {250, 80}, 5);
-    set.add_sprite(last_score_sprite_, {205, 50}, 5);
+    set.add_sprite(last_score_sprite_, {185, 50}, 5);
     if(!model_.bird.live){
         score_swap_draw(set);
         last_checked_score_ = 0;
@@ -61,7 +61,8 @@ View::score_swap_draw(ge211::Sprite_set& set)
     current_score_sprite_.reconfigure(builder_current);
 
     ge211::Text_sprite::Builder builder_last(last_score_font_);
-    builder_last << "Last Score: " + std::to_string(model_.previous_game_score);
+    builder_last << "Highest Score: " + std::to_string(model_
+    .previous_game_score);
     last_score_sprite_.reconfigure(builder_last);
 
 }

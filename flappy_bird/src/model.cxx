@@ -42,7 +42,10 @@ Model::on_frame(double dt){
 void
 Model::reset_game()
 {
-    previous_game_score = score;
+    if (score > previous_game_score){
+        previous_game_score = score;
+    }
+
     pipe_positions.clear();
     scored_pipes.clear();
 

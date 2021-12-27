@@ -414,6 +414,14 @@
 			<Option target="model_test"/>
 			<Option target="flappy_bird"/>
 		</Unit>
+		<Unit filename="/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/pipes.cxx">
+			<Option target="model_test"/>
+			<Option target="flappy_bird"/>
+		</Unit>
+		<Unit filename="/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/pipes.hxx">
+			<Option target="model_test"/>
+			<Option target="flappy_bird"/>
+		</Unit>
 		<Unit filename="/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/view.cxx">
 			<Option target="flappy_bird"/>
 		</Unit>

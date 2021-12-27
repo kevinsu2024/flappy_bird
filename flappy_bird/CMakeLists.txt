@@ -10,6 +10,7 @@ include(.cs211/cmake/CMakeLists.txt)
 set(MODEL_SRC
         src/model.cxx
         src/bird.cxx
+        src/pipes.cxx
         )
 
 # TODO: PUT ADDITIONAL NON-MODEL (UI) .cxx FILES IN THIS LIST:

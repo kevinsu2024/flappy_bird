@@ -275,7 +275,15 @@ iostream
 /Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/model.hxx
 bird.hxx
 /Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/bird.hxx
+pipes.hxx
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/pipes.hxx
 vector
+-
+iostream
+-
+
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/pipes.hxx
+ge211.hxx
 -
 iostream
 -

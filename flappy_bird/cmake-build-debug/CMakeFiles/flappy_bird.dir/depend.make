@@ -64,6 +64,7 @@ CMakeFiles/flappy_bird.dir/src/controller.cxx.o: \
  ../src/controller.cxx \
  ../src/controller.hxx \
  ../src/model.hxx \
+ ../src/pipes.hxx \
  ../src/view.hxx \
  /usr/local/include/SDL2/SDL_blendmode.h \
  /usr/local/include/SDL2/SDL_config.h \
@@ -105,6 +106,7 @@ CMakeFiles/flappy_bird.dir/src/main.cxx.o: \
  ../src/controller.hxx \
  ../src/main.cxx \
  ../src/model.hxx \
+ ../src/pipes.hxx \
  ../src/view.hxx \
  /usr/local/include/SDL2/SDL_blendmode.h \
  /usr/local/include/SDL2/SDL_config.h \
@@ -145,6 +147,45 @@ CMakeFiles/flappy_bird.dir/src/model.cxx.o: \
  ../src/bird.hxx \
  ../src/model.cxx \
  ../src/model.hxx \
+ ../src/pipes.hxx \
+ /usr/local/include/SDL2/SDL_blendmode.h \
+ /usr/local/include/SDL2/SDL_config.h \
+ /usr/local/include/SDL2/SDL_endian.h \
+ /usr/local/include/SDL2/SDL_error.h \
+ /usr/local/include/SDL2/SDL_pixels.h \
+ /usr/local/include/SDL2/SDL_platform.h \
+ /usr/local/include/SDL2/SDL_rect.h \
+ /usr/local/include/SDL2/SDL_render.h \
+ /usr/local/include/SDL2/SDL_rwops.h \
+ /usr/local/include/SDL2/SDL_stdinc.h \
+ /usr/local/include/SDL2/SDL_surface.h \
+ /usr/local/include/SDL2/SDL_version.h \
+ /usr/local/include/SDL2/SDL_video.h \
+ /usr/local/include/SDL2/begin_code.h \
+ /usr/local/include/SDL2/close_code.h
+CMakeFiles/flappy_bird.dir/src/pipes.cxx.o: \
+ ../.cs211/lib/ge211/include/ge211.hxx \
+ ../.cs211/lib/ge211/include/ge211_audio.hxx \
+ ../.cs211/lib/ge211/include/ge211_base.hxx \
+ ../.cs211/lib/ge211/include/ge211_color.hxx \
+ ../.cs211/lib/ge211/include/ge211_error.hxx \
+ ../.cs211/lib/ge211/include/ge211_event.hxx \
+ ../.cs211/lib/ge211/include/ge211_forward.hxx \
+ ../.cs211/lib/ge211/include/ge211_geometry.hxx \
+ ../.cs211/lib/ge211/include/ge211_if_cpp.hxx \
+ ../.cs211/lib/ge211/include/ge211_noexcept.hxx \
+ ../.cs211/lib/ge211/include/ge211_random.hxx \
+ ../.cs211/lib/ge211/include/ge211_render.hxx \
+ ../.cs211/lib/ge211/include/ge211_resource.hxx \
+ ../.cs211/lib/ge211/include/ge211_session.hxx \
+ ../.cs211/lib/ge211/include/ge211_sprites.hxx \
+ ../.cs211/lib/ge211/include/ge211_time.hxx \
+ ../.cs211/lib/ge211/include/ge211_type_traits.hxx \
+ ../.cs211/lib/ge211/include/ge211_util.hxx \
+ ../.cs211/lib/ge211/include/ge211_window.hxx \
+ ../src/pipes.hxx \
+ .cs211/lib/ge211/include/ge211_version.hxx \
+ ../src/pipes.cxx \
  /usr/local/include/SDL2/SDL_blendmode.h \
  /usr/local/include/SDL2/SDL_config.h \
  /usr/local/include/SDL2/SDL_endian.h \
@@ -183,6 +224,7 @@ CMakeFiles/flappy_bird.dir/src/view.cxx.o: \
  .cs211/lib/ge211/include/ge211_version.hxx \
  ../src/bird.hxx \
  ../src/model.hxx \
+ ../src/pipes.hxx \
  ../src/view.cxx \
  ../src/view.hxx \
  /usr/local/include/SDL2/SDL_blendmode.h \

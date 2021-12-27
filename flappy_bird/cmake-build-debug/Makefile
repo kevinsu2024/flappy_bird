@@ -338,6 +338,33 @@ src/model.cxx.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/flappy_bird.dir/build.make CMakeFiles/flappy_bird.dir/src/model.cxx.s
 .PHONY : src/model.cxx.s
 
+src/pipes.o: src/pipes.cxx.o
+.PHONY : src/pipes.o
+
+# target to build an object file
+src/pipes.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_test.dir/build.make CMakeFiles/model_test.dir/src/pipes.cxx.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/flappy_bird.dir/build.make CMakeFiles/flappy_bird.dir/src/pipes.cxx.o
+.PHONY : src/pipes.cxx.o
+
+src/pipes.i: src/pipes.cxx.i
+.PHONY : src/pipes.i
+
+# target to preprocess a source file
+src/pipes.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_test.dir/build.make CMakeFiles/model_test.dir/src/pipes.cxx.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/flappy_bird.dir/build.make CMakeFiles/flappy_bird.dir/src/pipes.cxx.i
+.PHONY : src/pipes.cxx.i
+
+src/pipes.s: src/pipes.cxx.s
+.PHONY : src/pipes.s
+
+# target to generate assembly for a file
+src/pipes.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_test.dir/build.make CMakeFiles/model_test.dir/src/pipes.cxx.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/flappy_bird.dir/build.make CMakeFiles/flappy_bird.dir/src/pipes.cxx.s
+.PHONY : src/pipes.cxx.s
+
 src/view.o: src/view.cxx.o
 .PHONY : src/view.o
 
@@ -416,6 +443,9 @@ help:
 	@echo "... src/model.o"
 	@echo "... src/model.i"
 	@echo "... src/model.s"
+	@echo "... src/pipes.o"
+	@echo "... src/pipes.i"
+	@echo "... src/pipes.s"
 	@echo "... src/view.o"
 	@echo "... src/view.i"
 	@echo "... src/view.s"

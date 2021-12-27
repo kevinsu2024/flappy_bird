@@ -16,12 +16,30 @@ start_position()
 Bird::Bird()
         :
         position(start_position()),
-        velocity(400),
-        jump_velocity(400),
-        gravity(980),
+        velocity(600),
+        jump_velocity(600),
+        gap_difference(1),
+        fitness(0),
+        score(0),
+        mutation_distribution(0, MUTATION_PROBABILITY - 1),
+        //real_distribution includes the min value and excludes the max.
+        //And since I'm a crazy perfectionist, I used nextafter.
+        node_distribution(-1, std::nextafter(1, 2)),
+        weights(2),
+        gravity(2500),
         live(false)
-{ }
+{
+}
 
+//bool
+//Bird::ai(){
+
+  //  std::vector<std::vector<float>> neural_network(3);
+
+    //neural_network[0].resize(TOTAL_INPUT_NODES);
+   // neural_network[1].resize(TOTAL_HIDDEN_NODES, 0);
+    //neural_network[2].resize(TOTAL_OUTPUT_NODES, 0);
+//}
 
 bool
 Bird::hits_bottom() const
@@ -50,6 +68,8 @@ Bird::next(double dt) const
     Bird result(*this);
     result.position.y -= (velocity * dt - (0.5 * gravity * dt * dt));
     result.velocity = (result.velocity - gravity * dt);
+
+
     return result;
 }
 
@@ -64,68 +84,14 @@ Bird::hits_pipe(std::vector<Position> posns) const{
     return false;
 }
 
+
+
+
 void
 Bird::jump()
 {
     velocity = jump_velocity;
 }
-
-// As with the edge collision functions, we want to use the ball's
-// bounding box. That is, the box whose top is center.y - radius, whose
-// left is center.x - radius, whose bottom is center.y + radius, and
-// whose right is center.x + radius.
-//
-// That way, we are checking for the intersection of two rectangles.
-//
-// One way to think of that is that the rectangles *don't* intersect if
-// either of these is true:
-//
-//  - The right side of one rectangle is to the left of the left side of
-//  the other.
-//
-//  - The bottom of one rectangle is above the top of the other
-//
-// Otherwise, they do.
-//
-// bool
-// Bird::hits_block(Block const& block) const
-// {
-//     float right_rectangle = block.x + block.width;
-//     float left_rectangle = block.x;
-//     float top_rectangle = block.y;
-//     float bottom_rectangle = block.y + block.height;
-//     float top_ball = center.y - radius;
-//     float bottom_ball = center.y + radius;
-//     float left_ball = center.x - radius;
-//     float right_ball = center.x + radius;
-//     return !(   (right_rectangle < left_ball) ||
-//                 (right_ball < left_rectangle) ||
-//                 (top_rectangle > bottom_ball) ||
-//                 (top_ball > bottom_rectangle));
-// }
-
-
-// Once you've written `Ball::hits_block`, finding an element of `bricks`
-// that collides with this ball isn't hard (use a for-each loop), but
-// how to /remove it once you find it? The more obvious solution may be
-// to shift all the elements after it to the left, but that's awkward,
-// and there's a cleaner way when the order of the elements of the
-// vector doesn't matter:
-//
-//  1. Replace the hit brick with a copy of the last brick (`bricks.last()`)
-//     by assignment. If you want to edit a brick in `bricks`, make sure each
-//     brick given by the for-each loop is a reference to the existing brick,
-//     not a copy.
-//
-//  2. Now the brick you didn't want is gone, but you have an extra in the back
-//     that duplicates the one you just got rid of, so remove the last brick
-//     using pop_back().
-//
-//  3. Don't keep iterating after a pop_back() or you will go out of
-//     bounds, because the loop condition won't adjust to the diminished
-//     vector.
-//
-
 
 bool
 operator==(Bird const& a, Bird const& b)

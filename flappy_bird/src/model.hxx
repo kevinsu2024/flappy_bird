@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bird.hxx"
+#include "pipes.hxx"
 #include <vector>
 #include <iostream>
 
@@ -13,16 +14,13 @@ public:
     //bird
     Bird bird;
 
+    Pipes pipes;
+
     int score;
 
     int previous_game_score;
 
 
-
-    //pipe positions
-    std::vector<ge211::geometry::Posn<int>> pipe_positions;
-
-    std::vector<bool> scored_pipes;
 
 
     //starts the game when spacebar is pressed
@@ -32,13 +30,16 @@ public:
     //creates the motion in the game
     void on_frame(double dt);
 
+    ///calculates the y-coordinate difference between the center of the pipe
+    /// gap and the the bird
+
+    void calculate_gap_difference(std::vector<ge211::geometry::Posn<int>>);
+
     void reset_game();
 
 private:
     //random pipe shift
-    ge211::Random_source<int> pipe_shift_;
-    float pipe_velocity_;
-    void move_pipes(double dt);
+
     void update_score();
 
 

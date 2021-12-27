@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/model_test.dir/src/bird.cxx.o"
   "CMakeFiles/model_test.dir/src/model.cxx.o"
+  "CMakeFiles/model_test.dir/src/pipes.cxx.o"
   "CMakeFiles/model_test.dir/test/model_test.cxx.o"
   "model_test"
   "model_test.pdb"

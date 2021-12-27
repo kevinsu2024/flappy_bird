@@ -6,6 +6,8 @@ View::View(Model const& model)
           bird_("bird.png"),
           pipe_("pipe.png"),
           background_("background.png"),
+          line_(ge211::geometry::Dims<int>{5,1},
+                ge211::Color::white()),
           current_score_font_("sans.ttf", 40),
           last_score_font_("sans.ttf", 20),
           current_score_sprite_("0" ,current_score_font_),
@@ -17,7 +19,6 @@ void
 View::draw(ge211::Sprite_set& set)
 {
 
-
     //draws bird's initial position
     set.add_sprite(bird_, model_.bird.position, 1,
                    ge211::geometry::Transform::scale
@@ -26,12 +27,20 @@ View::draw(ge211::Sprite_set& set)
     //draws background
     set.add_sprite(background_, {0, -60}, 0, ge211::geometry::Transform::scale
             (4));
+    //draws line
+    set.add_sprite(line_, {185,300},
+                   2, ge211::geometry::Transform::scale_y(model_
+                   .bird.gap_difference));
 
     //draws pipes according to pipe_positions
-    for (ge211::geometry::Posn<int> pos: model_.pipe_positions) {
+    for (ge211::geometry::Posn<int> pos: model_.pipes.pipe_positions) {
         set.add_sprite(pipe_, pos, 1,
                        ge211::geometry::Transform::scale_x(0.9));
     }
+
+
+
+
     draw_score_(set);
 
 }

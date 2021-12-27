@@ -19,6 +19,7 @@ private:
     ge211::Image_sprite bird_ {"bird.png"};
     ge211::Image_sprite pipe_ {"pipe.png"};
     ge211::Image_sprite background_ {"background.png"};
+    ge211::Rectangle_sprite line_ ;
     ge211::Font current_score_font_ ;
     ge211::Font last_score_font_;
     ge211::sprites::Text_sprite current_score_sprite_;

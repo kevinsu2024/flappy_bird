@@ -5,7 +5,6 @@
 #pragma once
 
 #include <ge211.hxx>
-
 #include <iostream>
 
 
@@ -64,6 +63,14 @@ using Block = ge211::Rect<int>;
 ///
 ///     a_ball.position += dt * a_ball.velocity;
 ///
+
+//AI constants
+constexpr unsigned char MUTATION_PROBABILITY = 64;
+constexpr unsigned char POPULATION_SIZE = 8;
+constexpr unsigned char TOTAL_HIDDEN_NODES = 4;
+constexpr unsigned char TOTAL_INPUT_NODES = 3;
+constexpr unsigned char TOTAL_OUTPUT_NODES = 1;
+
 struct Bird
 {
     //
@@ -117,22 +124,14 @@ struct Bird
     /// scene.
     bool hits_bottom() const;
 
-    /// Determines whether the ball's bounding box intersects with the
-    /// given block.
-    ///
-    /// Intersection between a circle and a rectangle is tricky, so we
-    /// will approximate it with the intersection of two rectangles.
+    /// Determines whether the bird hits the pipe
     bool hits_pipe(std::vector<ge211::geometry::Posn<int>>) const;
 
-    /// Collision detection between the ball and the whole vector of
-    /// bricks. If the ball collides with some brick then that brick is
-    /// removed and the function returns true. (The ball may collide
-    /// with more than one brick, but the function should return after
-    /// the first collision is found.) If there is no collision then the
-    /// function returns false.
 
-    ///setting bird velocity to initial velocity
+
     void jump();
+
+
     //
     // MEMBER VARIABLES
     //
@@ -143,16 +142,35 @@ struct Bird
     /// The position of the top left of the bird.
     Position position;
 
+
+
     /// The current velocity of the bird in pixels per tick.
     float velocity;
     /// The start velocity of the bird in pixels per tick.
     float jump_velocity;
+
+
+
+    int gap_difference;
+
+    int fitness;
+
+    int score;
+
+    std::uniform_int_distribution<unsigned short>mutation_distribution;
+
+    std::uniform_real_distribution<float> node_distribution;
+
+    std::vector<std::vector<std::vector<float>>> weights;
 
     /// The gravitational constant
     float gravity;
     /// Whether the ball is moving freely (true) or stuck to the top of
     /// the paddle (false).
     bool live;
+
+
+
 };
 
 /// Compares two `Ball`s for equality. This may be useful for testing.

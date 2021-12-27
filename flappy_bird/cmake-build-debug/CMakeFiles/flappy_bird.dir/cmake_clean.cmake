@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/flappy_bird.dir/src/controller.cxx.o"
   "CMakeFiles/flappy_bird.dir/src/main.cxx.o"
   "CMakeFiles/flappy_bird.dir/src/model.cxx.o"
+  "CMakeFiles/flappy_bird.dir/src/pipes.cxx.o"
   "CMakeFiles/flappy_bird.dir/src/view.cxx.o"
   "flappy_bird"
   "flappy_bird.pdb"

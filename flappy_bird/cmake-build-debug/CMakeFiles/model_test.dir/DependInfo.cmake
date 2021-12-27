@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/bird.cxx" "/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/cmake-build-debug/CMakeFiles/model_test.dir/src/bird.cxx.o"
   "/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/model.cxx" "/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/cmake-build-debug/CMakeFiles/model_test.dir/src/model.cxx.o"
+  "/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/pipes.cxx" "/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/cmake-build-debug/CMakeFiles/model_test.dir/src/pipes.cxx.o"
   "/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/test/model_test.cxx" "/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/cmake-build-debug/CMakeFiles/model_test.dir/test/model_test.cxx.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")

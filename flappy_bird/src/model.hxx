@@ -4,6 +4,9 @@
 #include "pipes.hxx"
 #include <vector>
 #include <iostream>
+#include <array>
+#include <chrono>
+#include <random>
 
 class Model
 {
@@ -11,15 +14,24 @@ class Model
 public:
 
     explicit Model();
-    //bird
-    Bird bird;
 
+    //Number of birds
+    std::array<Bird, 8> birds;
+
+    //Array of pipe positions
     Pipes pipes;
 
+    //Highest bird score of current generation
     int score;
 
+    //Generation number
+    int generation;
+
+    //Last gen's highest score
     int previous_game_score;
 
+    //Whether all birds are dead
+    bool one_bird_alive;
 
 
 
@@ -30,16 +42,17 @@ public:
     //creates the motion in the game
     void on_frame(double dt);
 
-    ///calculates the y-coordinate difference between the center of the pipe
-    /// gap and the the bird
-
-    void calculate_gap_difference(std::vector<ge211::geometry::Posn<int>>);
 
     void reset_game();
 
 private:
-    //random pipe shift
+    //random bird jump
+    ge211::Random_source<int> bird_jumps;
+    std::mt19937_64 random_engine;
 
+    int max_fitness_;
+    int death_y_;
+    bool generated_weights_;
     void update_score();
 
 

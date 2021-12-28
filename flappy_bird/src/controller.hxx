@@ -29,4 +29,5 @@ private:
     ge211::audio::Sound_effect death_sound_; //death
     bool played_death_sound_;
     int last_checked_score_;
+
 };

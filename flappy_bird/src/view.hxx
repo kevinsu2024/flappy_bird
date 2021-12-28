@@ -24,6 +24,7 @@ private:
     ge211::Font last_score_font_;
     ge211::sprites::Text_sprite current_score_sprite_;
     ge211::sprites::Text_sprite last_score_sprite_;
+    ge211::sprites::Text_sprite generation_sprite_;
     int last_checked_score_;
     void draw_score_(ge211::Sprite_set& set);
 };

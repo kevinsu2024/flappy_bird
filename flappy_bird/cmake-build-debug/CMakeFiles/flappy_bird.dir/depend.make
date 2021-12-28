@@ -21,6 +21,7 @@ CMakeFiles/flappy_bird.dir/src/bird.cxx.o: \
  ../.cs211/lib/ge211/include/ge211_type_traits.hxx \
  ../.cs211/lib/ge211/include/ge211_util.hxx \
  ../.cs211/lib/ge211/include/ge211_window.hxx \
+ ../src/pipes.hxx \
  .cs211/lib/ge211/include/ge211_version.hxx \
  ../src/bird.cxx \
  ../src/bird.hxx \

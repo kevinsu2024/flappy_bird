@@ -1,45 +1,132 @@
 // YOU DEFINITELY NEED TO MODIFY THIS FILE.
 
 #include "bird.hxx"
+#include <math.h>
 
-
-// Computes where the ball should be when it's stuck to the paddle:
-// centered above it, 1 pixel up.
+// Computes where the bird should start.
 static Position
 start_position()
 {
     return {150, 276};
 }
 
-// It won't compile without this, so you get it for free.
 
 Bird::Bird()
         :
         position(start_position()),
-        velocity(600),
-        jump_velocity(600),
-        gap_difference(1),
+        velocity(0),
+        jump_velocity(300),
         fitness(0),
-        score(0),
         mutation_distribution(0, MUTATION_PROBABILITY - 1),
-        //real_distribution includes the min value and excludes the max.
-        //And since I'm a crazy perfectionist, I used nextafter.
         node_distribution(-1, std::nextafter(1, 2)),
         weights(2),
-        gravity(2500),
+        gravity(1000),
         live(false)
 {
+    reset();
 }
 
-//bool
-//Bird::ai(){
+//-- CNN function
+//1 layer of hidden nodes
 
-  //  std::vector<std::vector<float>> neural_network(3);
+bool
+Bird::cnn(std::vector<Position> posns){
 
-    //neural_network[0].resize(TOTAL_INPUT_NODES);
-   // neural_network[1].resize(TOTAL_HIDDEN_NODES, 0);
-    //neural_network[2].resize(TOTAL_OUTPUT_NODES, 0);
-//}
+    std::vector<std::vector<float>> neural_network(3);
+
+    neural_network[0].resize(TOTAL_INPUT_NODES);
+    neural_network[1].resize(TOTAL_HIDDEN_NODES, 0);
+    neural_network[2].resize(TOTAL_OUTPUT_NODES, 0);
+
+    //Input 1 : bird's vertical speed
+    neural_network[0][0] = velocity;
+    //Input 2 : bird's y position in relation to the gap difference
+    neural_network[0][1] = calculate_gap_difference(posns);
+
+
+
+    for (unsigned char a = 0; a < neural_network.size() - 1; a++)
+    {
+        for (unsigned char b = 0; b < neural_network[1 + a].size(); b++)
+        {
+            for (unsigned char c = 0;    c < neural_network[a].size(); c++)
+            {
+                neural_network[1 + a][b] += neural_network[a][c] * weights[a][c][b];
+            }
+
+            if (0 >= neural_network[1 + a][b])
+            {
+                neural_network[1 + a][b] = pow(2,neural_network[1 + a][b]) - 1;
+            }
+            else
+            {
+                neural_network[1 + a][b] = 1 - pow(2,-neural_network[1 + a][b]);
+            }
+        }
+    }
+
+    return 0 <= neural_network[2][0];
+
+
+}
+
+void Bird::crossover(std::mt19937_64& i_random_engine, const std::vector<std::vector<std::vector<float>>>& i_bird_0_weights, const std::vector<std::vector<std::vector<float>>>& i_bird_1_weights)
+{
+    //Uniform crossover
+    //Randomly picks between the weights of the most successful and second
+    // most successful birds
+    //Some weights are mutated, however.
+
+    for (unsigned char a = 0; a < weights.size(); a++)
+    {
+        for (unsigned char b = 0; b < weights[a].size(); b++)
+        {
+            for (unsigned char c = 0; c < weights[a][b].size(); c++)
+            {
+
+                if (0 == mutation_distribution(i_random_engine))
+                {
+
+                    weights[a][b][c] = node_distribution(i_random_engine);
+                }
+                else{
+                    if (0 == rand() % 2)
+                    {
+
+                        weights[a][b][c] = i_bird_0_weights[a][b][c];
+                    }
+                    else
+                    {
+
+                        weights[a][b][c] = i_bird_1_weights[a][b][c];
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+void Bird::generate_weights(std::mt19937_64& i_random_engine)
+{
+
+    weights[0].resize(TOTAL_INPUT_NODES, std::vector<float>(TOTAL_HIDDEN_NODES));
+    weights[1].resize(TOTAL_HIDDEN_NODES, std::vector<float>(TOTAL_OUTPUT_NODES));
+
+    //Each weight is randomly generated.
+    for (std::vector<std::vector<float>>& layer : weights)
+    {
+        for (std::vector<float>& previous_node : layer)
+        {
+            for (float& next_node : previous_node)
+            {
+
+                next_node = node_distribution(i_random_engine);
+
+            }
+        }
+    }
+}
 
 bool
 Bird::hits_bottom() const
@@ -47,8 +134,6 @@ Bird::hits_bottom() const
     return position.y+10 > 590;
 }
 
-// The ball hits the top when the y coordinate of its top is less than
-// 0. (Note that the parameter isn't used.)
 bool
 Bird::hits_top() const
 {
@@ -56,19 +141,15 @@ Bird::hits_top() const
 }
 
 
-// Recall that `this` is a `const Ball*`, and you can create a copy of a ball
-// with the copy constructor. So to get a new `Ball` to return, you can write
-//
-//     Ball result(*this);
-//
 
 Bird
 Bird::next(double dt) const
 {
+
     Bird result(*this);
     result.position.y -= (velocity * dt - (0.5 * gravity * dt * dt));
     result.velocity = (result.velocity - gravity * dt);
-
+    result.fitness += 1;
 
     return result;
 }
@@ -78,13 +159,39 @@ Bird::hits_pipe(std::vector<Position> posns) const{
     for (Position top_left: posns){
         if ((position.y < top_left.y + 305 || position.y > top_left.y + 495)
         && (position.x > top_left.x + 280 && position.x < top_left.x + 390)){
+
             return true;
         }
     }
     return false;
 }
 
+float
+Bird::calculate_gap_difference(std::vector<Position> posns){
 
+    for (Position top_left: posns) {
+
+        if ((top_left.x + 390 - position.x) > 0 && (top_left.x + 390 - position
+        .x) < 250 ){
+            return top_left.y + 400 - position.y;
+        }
+    }
+    return 100000000;
+}
+
+
+void
+Bird::reset()
+{
+    live = true;
+    velocity = 0;
+    position = start_position();
+    fitness = 0;
+}
+std::vector<std::vector<std::vector<float>>>
+Bird::get_weights(){
+    return weights;
+}
 
 
 void
@@ -106,14 +213,16 @@ operator!=(Bird const& a, Bird const& b)
     return !(a == b);
 }
 
-std::ostream&
-operator<<(std::ostream& o, Bird const& bird)
+bool
+operator > (Bird const& a, Bird const& b)
 {
-    // You may have seen this message when running your tests. It
-    // would be more helpful if it showed the contents of each ball,
-    // right? So you can make that happen by making this print the
-    // contents of the ball (however you like).
-    o << "Bird{";
-    o << bird.velocity;
-    return o << "}";
+    return a.fitness > b.fitness;
 }
+
+bool
+operator < (Bird const& a, Bird const& b)
+{
+    return a.fitness < b.fitness;
+}
+
+

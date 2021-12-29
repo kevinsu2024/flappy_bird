@@ -15,7 +15,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb716f69-353b-45dd-a36e-163dc2ae2584" name="Changes" comment="Finished CNN and genetic algorithm implementation&#10;Initial handholding - don't repeatedly jump">
+    <list default="true" id="bb716f69-353b-45dd-a36e-163dc2ae2584" name="Changes" comment="Adjusted mutation probability to 1/64">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/bird.cxx.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/bird.cxx.o" afterDir="false" />
@@ -25,7 +25,9 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/view.cxx.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/view.cxx.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/flappy_bird" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/flappy_bird" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bird.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/bird.cxx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bird.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/bird.hxx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/model.cxx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +40,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>

@@ -40,9 +40,14 @@ Bird::cnn(std::vector<Position> posns){
 
     //Input 1 : bird's vertical speed
     neural_network[0][0] = velocity;
-    //Input 2 : bird's y position in relation to the gap difference
-    neural_network[0][1] = calculate_gap_difference(posns);
-
+    //Input 2 : bird's y position in relation to the gap difference of the
+    // end of the pipe
+    neural_network[0][1] = calculate_gap_difference_back(posns);
+    //Input 3: bird's x-position relative to the closest pipe
+    neural_network[0][2] = calculate_x_pos(posns);
+    //Input 4: bird's y position in relation to the gap difference of the front
+    // of the pipe
+    neural_network[0][3] = calculate_gap_difference_front(posns);
 
 
     for (unsigned char a = 0; a < neural_network.size() - 1; a++)
@@ -51,9 +56,12 @@ Bird::cnn(std::vector<Position> posns){
         {
             for (unsigned char c = 0;    c < neural_network[a].size(); c++)
             {
+                //Each new entry in the neural network is based on the input
+                // of the previous entry times weights
                 neural_network[1 + a][b] += neural_network[a][c] * weights[a][c][b];
             }
-
+            //throw in inverse hyperbolic function to make result within -1
+            // and 1
             if (0 >= neural_network[1 + a][b])
             {
                 neural_network[1 + a][b] = pow(2,neural_network[1 + a][b]) - 1;
@@ -64,7 +72,7 @@ Bird::cnn(std::vector<Position> posns){
             }
         }
     }
-
+    //if result > 0, then we have a flap :)
     return 0 <= neural_network[2][0];
 
 
@@ -74,8 +82,9 @@ void Bird::crossover(std::mt19937_64& i_random_engine, const std::vector<std::ve
 {
     //Uniform crossover
     //Randomly picks between the weights of the most successful and second
-    // most successful birds
-    //Some weights are mutated, however.
+    // most successful birds.
+    //Some weights are mutated randomly, however, to prevent the evolution
+    // from being stuck.
 
     for (unsigned char a = 0; a < weights.size(); a++)
     {
@@ -83,21 +92,23 @@ void Bird::crossover(std::mt19937_64& i_random_engine, const std::vector<std::ve
         {
             for (unsigned char c = 0; c < weights[a][b].size(); c++)
             {
-
+                //random mutation in weights
                 if (0 == mutation_distribution(i_random_engine))
                 {
 
                     weights[a][b][c] = node_distribution(i_random_engine);
                 }
                 else{
-                    if (0 == rand() % 2)
+                    //50% chance
+                    if (0 != rand() % 2)
                     {
-
+                        //most successful bird is bird 0
                         weights[a][b][c] = i_bird_0_weights[a][b][c];
                     }
+                    //50% chance
                     else
                     {
-
+                        //second most successful bird is bird 1
                         weights[a][b][c] = i_bird_1_weights[a][b][c];
                     }
                 }
@@ -113,7 +124,7 @@ void Bird::generate_weights(std::mt19937_64& i_random_engine)
     weights[0].resize(TOTAL_INPUT_NODES, std::vector<float>(TOTAL_HIDDEN_NODES));
     weights[1].resize(TOTAL_HIDDEN_NODES, std::vector<float>(TOTAL_OUTPUT_NODES));
 
-    //Each weight is randomly generated.
+    //Each node in weight is randomly generated.
     for (std::vector<std::vector<float>>& layer : weights)
     {
         for (std::vector<float>& previous_node : layer)
@@ -167,7 +178,7 @@ Bird::hits_pipe(std::vector<Position> posns) const{
 }
 
 float
-Bird::calculate_gap_difference(std::vector<Position> posns){
+Bird::calculate_gap_difference_back(std::vector<Position> posns){
 
     for (Position top_left: posns) {
 
@@ -176,10 +187,34 @@ Bird::calculate_gap_difference(std::vector<Position> posns){
             return top_left.y + 400 - position.y;
         }
     }
-    return 100000000;
+    return (posns.at(0).y + 400 - position.y);
 }
 
+float
+Bird::calculate_gap_difference_front(std::vector<Position> posns){
 
+    for (Position top_left: posns) {
+
+        if ((top_left.x + 280 - position.x) > 0 && (top_left.x + 280 - position
+                .x) < 250 ){
+            return top_left.y + 400 - position.y;
+        }
+    }
+    return (posns.at(0).y + 400 - position.y);
+}
+
+float
+Bird::calculate_x_pos(std::vector<Position> posns){
+
+    for (Position top_left: posns) {
+
+        if ((top_left.x + 390 - position.x) > 0 && (top_left.x + 390 - position
+                .x) < 250 ){
+            return (top_left.x + 390 - position.x);
+        }
+    }
+    return (posns.at(0).x + 390 - position.x);
+}
 void
 Bird::reset()
 {

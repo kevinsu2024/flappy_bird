@@ -21,8 +21,8 @@ using Block = ge211::Rect<int>;
 
 //AI constants
 constexpr unsigned char MUTATION_PROBABILITY = 64;
-constexpr unsigned char TOTAL_HIDDEN_NODES = 4;
-constexpr unsigned char TOTAL_INPUT_NODES = 2;
+constexpr unsigned char TOTAL_HIDDEN_NODES = 16;
+constexpr unsigned char TOTAL_INPUT_NODES = 4;
 constexpr unsigned char TOTAL_OUTPUT_NODES = 1;
 
 struct Bird
@@ -50,11 +50,15 @@ struct Bird
 
     bool hits_top() const;
 
-
-
     bool hits_pipe(std::vector<ge211::geometry::Posn<int>>) const;
 
-    float calculate_gap_difference(std::vector<ge211::geometry::Posn<int>>);
+    float calculate_gap_difference_front
+    (std::vector<ge211::geometry::Posn<int>>);
+
+    float calculate_gap_difference_back
+            (std::vector<ge211::geometry::Posn<int>>);
+
+    float calculate_x_pos(std::vector<ge211::geometry::Posn<int>>);
 
     void jump();
 

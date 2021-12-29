@@ -50,12 +50,12 @@ Model::on_frame(double dt){
 
             if (next_bird.hits_bottom() or next_bird.hits_top() or
                 next_bird.hits_pipe(pipes.pipe_positions)) {
-                birds[i].fitness -= 0.01* abs(birds[i].calculate_gap_difference
-                        (pipes.pipe_positions));
+
                 birds[i].live = false;
                 if (birds[i].fitness > max_fitness_){
                     max_fitness_ = birds[i].fitness;
-                    death_y_ = birds[i].calculate_gap_difference(pipes.pipe_positions);
+                    death_y_ = birds[i].calculate_gap_difference_back(pipes
+                            .pipe_positions);
                 }
 
 
@@ -64,8 +64,11 @@ Model::on_frame(double dt){
 
             birds[i] = next_bird;
 
-            if (birds[i].velocity < -100 && 1==birds[i].cnn(pipes
-            .pipe_positions))
+
+            if (birds[i].velocity < 0 &&  //add this first boolean to make
+            // sure the birds actually have a flapping motion instead of just
+            //flying into the sky
+            1==birds[i].cnn(pipes.pipe_positions))
             {
 
                 birds[i].jump();

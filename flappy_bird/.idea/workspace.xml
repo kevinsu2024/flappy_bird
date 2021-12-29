@@ -15,11 +15,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb716f69-353b-45dd-a36e-163dc2ae2584" name="Changes" comment="separated pipes to its own file.">
+    <list default="true" id="bb716f69-353b-45dd-a36e-163dc2ae2584" name="Changes" comment="Finished CNN and genetic algorithm implementation&#10;Initial handholding - don't repeatedly jump">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/bird.cxx.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/bird.cxx.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/controller.cxx.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/controller.cxx.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/main.cxx.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/main.cxx.o" afterDir="false" />
@@ -27,15 +25,7 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/view.cxx.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/flappy_bird.dir/src/view.cxx.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/flappy_bird" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/flappy_bird" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bird.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/bird.cxx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bird.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/bird.hxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller.cxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller.hxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/model.cxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/model.hxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pipes.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipes.cxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view.cxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view.hxx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +141,7 @@
       <workItem from="1638392784327" duration="8000" />
       <workItem from="1638393097435" duration="104000" />
       <workItem from="1640537979666" duration="736000" />
-      <workItem from="1640567956669" duration="39810000" />
+      <workItem from="1640567956669" duration="41445000" />
     </task>
     <task id="LOCAL-00001" summary="Changed last score to highest score">
       <created>1640538233805</created>
@@ -167,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640581407971</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Finished CNN and genetic algorithm implementation&#10;Initial handholding - don't repeatedly jump">
+      <created>1640725607422</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1640725607422</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +185,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed last score to highest score" />
     <MESSAGE value="separated pipes to its own file." />
-    <option name="LAST_COMMIT_MESSAGE" value="separated pipes to its own file." />
+    <MESSAGE value="Finished CNN and genetic algorithm implementation&#10;Initial handholding - don't repeatedly jump" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished CNN and genetic algorithm implementation&#10;Initial handholding - don't repeatedly jump" />
   </component>
 </project>

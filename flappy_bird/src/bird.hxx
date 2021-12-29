@@ -20,7 +20,7 @@ using Block = ge211::Rect<int>;
 
 
 //AI constants
-constexpr unsigned char MUTATION_PROBABILITY = 4;
+constexpr unsigned char MUTATION_PROBABILITY = 64;
 constexpr unsigned char TOTAL_HIDDEN_NODES = 4;
 constexpr unsigned char TOTAL_INPUT_NODES = 2;
 constexpr unsigned char TOTAL_OUTPUT_NODES = 1;

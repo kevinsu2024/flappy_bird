@@ -264,7 +264,19 @@ SDL_video.h
 string
 -
 
+../src/pipes.hxx
+ge211.hxx
+-
+iostream
+-
+
 .cs211/lib/ge211/include/ge211_version.hxx
+
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/bird.cxx
+bird.hxx
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/bird.hxx
+math.h
+-
 
 /Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/bird.hxx
 ge211.hxx
@@ -273,6 +285,22 @@ iostream
 -
 pipes.hxx
 -
+
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/controller.cxx
+controller.hxx
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/controller.hxx
+
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/controller.hxx
+view.hxx
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/view.hxx
+ge211.hxx
+-
+
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/main.cxx
+model.hxx
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/model.hxx
+controller.hxx
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/controller.hxx
 
 /Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/model.cxx
 model.hxx
@@ -301,6 +329,16 @@ ge211.hxx
 -
 iostream
 -
+
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/view.cxx
+view.hxx
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/view.hxx
+string
+-
+
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/view.hxx
+model.hxx
+/Users/kevinsu/Documents/GitHub/flappy_bird/flappy_bird/src/model.hxx
 
 /usr/local/include/SDL2/SDL_blendmode.h
 begin_code.h
